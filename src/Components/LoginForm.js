@@ -5,25 +5,42 @@ import Form from 'react-bootstrap/Form';
 
 function LoginForm() {
   return (
+    
+  <Container>
+        <Row className="vh-100 d-flex align-items-center justify-content-center">
+            <Col xs={6} className='form-Login'>
 
-  <Form >
+              <Row className="justify-content-center">
+                <Col xs={12} sm={4} md={10} lg={10} className="text-center">
+                    <img src={logo} alt="logo"/>
+                </Col>
+              </Row>
 
-    <Form.Group className="mb-3" controlId="formBasicEmail">
-      <Form.Label>Usuario</Form.Label>
-      <Form.Control className='custom_Input' type="Usuario" placeholder="Usuario" />
-    </Form.Group>
+              <Row className="justify-content-center">
+                  <Col xs={12} sm={4} md={10} lg={10} >
+                    <Form >
 
-    <Form.Group className="mb-3" controlId="formBasicPassword">
-      <Form.Label>Senha</Form.Label>
-      <Form.Control type="password" className='custom_Input' placeholder="Senha" />
-    </Form.Group>
-    <div class="text-center">
-      <Button variant="primary" type="submit" className='Custom_btn'>
-        Login
-      </Button>
-    </div>
-  </Form>
+                    <Form.Group className="mb-3" controlId="formBasicEmail">
+                      <Form.Label>Usuario</Form.Label>
+                      <Form.Control className='custom_Input' type="Usuario" placeholder="Usuario" />
+                    </Form.Group>
 
+                    <Form.Group className="mb-3" controlId="formBasicPassword">
+                      <Form.Label>Senha</Form.Label>
+                      <Form.Control type="password" className='custom_Input' placeholder="Senha" />
+                    </Form.Group>
+                    <div class="text-center">
+                      <Button variant="primary" type="submit" className='Custom_btn'>
+                        Login
+                      </Button>
+                    </div>
+                    </Form>
+                  
+                  </Col>                 
+              </Row>
+            </Col>
+          </Row>
+      </Container>  
     
   );
 }
