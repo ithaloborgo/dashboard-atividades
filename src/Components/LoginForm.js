@@ -1,6 +1,9 @@
 
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import { Container, Row, Col } from 'react-bootstrap';
+import Logo from '../img/LogoWeb.jpg';
+
 //import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 
 function LoginForm() {
@@ -12,7 +15,7 @@ function LoginForm() {
 
               <Row className="justify-content-center">
                 <Col xs={12} sm={4} md={10} lg={10} className="text-center">
-                    <img src={logo} alt="logo"/>
+                    <img src={Logo} alt="logo"/>
                 </Col>
               </Row>
 
