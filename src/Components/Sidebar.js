@@ -45,6 +45,7 @@ function Sidebar() {
                                     Home
                                 </Nav.Link>
                                 <Nav.Link href="#action2">Meus Chamados</Nav.Link>
+                                <Nav.Link href="#action3">Clientes</Nav.Link>
                             
                             </Nav>
 
