@@ -18,7 +18,7 @@ function Content_teste() {
           <Table striped bordered hover>
             <thead>
               <tr>
-                <th>Cliente</th>
+                <th>Cliente2</th>
                 <th>Atividade</th>
                 <th>Profissional</th>
                 <th>Status</th>
