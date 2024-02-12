@@ -19,7 +19,7 @@ function Content_teste() {
             <thead>
               <tr>
                 <th>Cliente</th>
-                <th>Atividade</th>
+                <th>Atividade2</th>
                 <th>Profissional</th>
                 <th>Status</th>
                 <th>Ações</th>
