@@ -1,68 +1,125 @@
-import { Container, Row, Col, Modal, Button, Form} from "react-bootstrap";
+import { Container, Row, Col, Modal, Button, Form, InputGroup} from "react-bootstrap";
+import React, { useState } from 'react';
 
 function ContentModal(props) {
+  const [validated, setValidated] = useState(false);
+
+  const handleSubmit = (event) => {
+    const form = event.currentTarget;
+    if (form.checkValidity() === false) {
+      event.preventDefault();
+      event.stopPropagation();
+    }
+
+    setValidated(true);
+  };
+  
   return (
 
     <Modal size="xl" {...props} aria-labelledby="contained-modal-title-vcenter" >
+      {/* Modals Header */}
       <Modal.Header closeButton>
         <Modal.Title id="contained-modal-title-vcenter">
           Chamado
         </Modal.Title>
       </Modal.Header>
+
+      {/* Modals Body conteudo */}
       <Modal.Body className="grid-example">
         <Container>
-           <Form >
-              <Row>
-                <Col xs={6} md={4}>
-                <Form.Label htmlFor="inputPassword5">Cliente</Form.Label>
-                <Form.Select aria-label="Default select example">
+
+            <Form noValidate validated={validated} onSubmit={handleSubmit}>
+              <Row className="mb-3">
+                <Form.Group as={Col} md="4" controlId="validationCustom01">
+
+                  <Form.Label>Clientes</Form.Label>
+
+                <Form.Select required>
                   <option></option>
-                  <option value="1">Gorilão</option>
-                  <option value="2">Fair Play</option>
+                  <option value="1">Fair Play</option>
+                  <option value="2">Boliche do Gorilão</option>
                   <option value="3">World Games</option>
                 </Form.Select>
-                </Col>
-                <Col xs={6} md={6}>
-                <Form.Label htmlFor="inputPassword5">Nome do chamado</Form.Label>
+
+                </Form.Group>
+
+                <Form.Group as={Col} md="4" controlId="validationCustom02">
+                  <Form.Label>Last name</Form.Label>
+
                   <Form.Control
+                    required
                     type="text"
-                    id="inputPassword5"
-                    aria-describedby="passwordHelpBlock"
+                    placeholder="Last name"
+                    defaultValue="Otto"
                   />
-                </Col>
-                <Col xs={6} md={2}>
-                  <Form.Label htmlFor="inputPassword5">Status</Form.Label>
-                  <Form.Select aria-label="Default select example">
-                    <option></option>
-                    <option value="1">Aberto</option>
-                    <option value="2">Em Andamento</option>
-                    <option value="3">Finalizado</option>
-                  </Form.Select>
-                </Col>
+
+                </Form.Group>
+
+                <Form.Group as={Col} md="4" controlId="validationCustomUsername">
+                  <Form.Label>Username</Form.Label>
+
+                  <InputGroup hasValidation>
+                    
+                    <InputGroup.Text id="inputGroupPrepend">@</InputGroup.Text>
+
+                    <Form.Control
+                      type="text"
+                      placeholder="Username"
+                      aria-describedby="inputGroupPrepend"
+                      required
+                    />
+
+                  </InputGroup>
+
+                </Form.Group>
               </Row>
 
-              <Row>
-                <Col xs={6} md={4}>
-                  <Form.Label htmlFor="inputPassword5">Suporte</Form.Label>
-                  <Form.Select aria-label="Default select example">
-                    <option></option>
-                    <option value="1">Luiz</option>
-                    <option value="2">Ithalu</option>
-                    <option value="3">Gabriel</option>
-                  </Form.Select>
-                </Col>
-                <Col xs={12} md={12}>
-                  <Form.Label htmlFor="inputPassword5">Descrição</Form.Label>
-                  <Form.Control as="textarea"
-                    id="inputPassword5"
-                    aria-describedby="passwordHelpBlock"
-                  />
-                </Col>
-                
+              <Row className="mb-3">
+
+                <Form.Group as={Col} md="6" controlId="validationCustom03">
+                  <Form.Label>City</Form.Label>
+
+                  <Form.Control type="text" placeholder="City" required />
+                  <Form.Control.Feedback type="invalid">
+                    Please provide a valid city.
+                  </Form.Control.Feedback>
+
+                </Form.Group>
+
+                <Form.Group as={Col} md="3" controlId="validationCustom04">
+                  <Form.Label>State</Form.Label>
+
+                  <Form.Control type="text" placeholder="State" required />
+
+                </Form.Group>
+
+                <Form.Group as={Col} md="3" controlId="validationCustom05">
+
+                  <Form.Label>Zip</Form.Label>
+
+                  <Form.Control type="text" placeholder="Zip" required />
+                  
+                </Form.Group>
               </Row>
-           </Form>
+
+            <Form.Group className="mb-3">
+
+              <Form.Check
+                required
+                label="Agree to terms and conditions"
+                feedback="You must agree before submitting."
+                feedbackType="invalid"
+              />
+
+            </Form.Group>
+
+            <Button type="submit">Submit form</Button>
+          </Form>
+
         </Container>
       </Modal.Body>
+
+      {/* Modals Footer*/}
       <Modal.Footer>
         <Button onClick={props.onHide}>Close</Button>
       </Modal.Footer>
