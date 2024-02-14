@@ -1,6 +1,6 @@
 import { Container, Row, Col, Modal, Button, Form} from "react-bootstrap";
 
-function ContentModal(props) {
+function ContentModalClientes(props) {
   return (
 
     <Modal size="xl" {...props} aria-labelledby="contained-modal-title-vcenter" >
@@ -71,4 +71,4 @@ function ContentModal(props) {
   );
 }
 
-export default ContentModal;
+export default ContentModalClientes;

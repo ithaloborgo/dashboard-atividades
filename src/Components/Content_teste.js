@@ -1,12 +1,25 @@
 import { Container, Row, Col, Button} from "react-bootstrap";
 import Table from 'react-bootstrap/Table';
 import { FaPencil,FaTrash  } from "react-icons/fa6";
-import ContentModal from "./ContentModal";
+import ContentModal from "./Modals/ContentModal";
 import React, { useState } from 'react';
 
 function Content_teste() {
-
+  // Variavel do modal para alternar a sua exibição 
   const [modalShow, setModalShow] = useState(false);
+
+  const [validated, setValidated] = useState(false);
+
+  const handleSubmit = (event) => {
+    const form = event.currentTarget;
+    if (form.checkValidity() === false) {
+      event.preventDefault();
+      event.stopPropagation();
+    }
+
+    setValidated(true);
+  };
+  
 
   return (
 
@@ -14,7 +27,13 @@ function Content_teste() {
     <Container className='Custom_Container'>
       <Row>
         <Col>
+          {/* Title Page */}
           <h1 className="Title_custom">Chamados - Suporte</h1>
+        </Col>
+      </Row>
+      <Row>
+        <Col>
+          {/* Content Page */}
           <Table striped bordered hover>
             <thead>
               <tr>
@@ -26,7 +45,7 @@ function Content_teste() {
               </tr>
             </thead>
             <tbody>
-
+              {/* Cada tr desse vai ser um component que vai ser preenchido com o retorno da API */}
               <tr>
                 <td>World Games</td>
                 <td>Erro no sla oq</td>
@@ -36,7 +55,6 @@ function Content_teste() {
                   <Button variant="dark" className="btn_custom" onClick={() => setModalShow(true)}><FaPencil /></Button>
                   <Button variant="dark"><FaTrash /></Button>
                 </td>
-
               </tr>
 
               <tr>
@@ -61,14 +79,13 @@ function Content_teste() {
                 </td>
               </tr>
 
-
-
             </tbody>
           </Table>
           <Button variant="dark" className="btn_custom" onClick={() => setModalShow(true)}>Novo Chamado</Button>
         </Col>
       </Row>
     </Container>
+    {/* Modal de edição ou criação de chamado | localizado na pasta Componentents/Modals/ContentModal */}
     <ContentModal show={modalShow} onHide={() => setModalShow(false)} />
     </>
   );
