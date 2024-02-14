@@ -42,13 +42,13 @@ function Sidebar(props) {
 
                             <Nav className="justify-content-end flex-grow-1 pe-3">
                                 
-                                <Nav.Link onClick={() => onComponentChange('content_teste')}>
+                                <Nav.Link onClick={() => onComponentChange('content_teste') + setShow(false)}>
                                         Home
                                 </Nav.Link>
-                                <Nav.Link onClick={() => onComponentChange('content_teste')}>
+                                <Nav.Link onClick={() => onComponentChange('content_teste') + setShow(false)}>
                                         Meus Chamados
                                 </Nav.Link>
-                                <Nav.Link onClick={() => onComponentChange('clientes')}>
+                                <Nav.Link onClick={() => onComponentChange('clientes') + setShow(false)}>
                                         Clientes
                                 </Nav.Link>
                             

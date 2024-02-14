@@ -1,7 +1,7 @@
 import { Container, Row, Col, Button} from "react-bootstrap";
 import Table from 'react-bootstrap/Table';
 import { FaPencil,FaTrash  } from "react-icons/fa6";
-import ContentModal from "./ContentModal";
+import ContentModal from "./Modals/ContentModal";
 import React, { useState } from 'react';
 
 function Content_teste() {

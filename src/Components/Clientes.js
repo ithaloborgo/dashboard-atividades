@@ -1,43 +1,75 @@
-import React from 'react';
-import { Container, Row, Col } from 'react-bootstrap';
+import React, { useState } from 'react';
+import { Container, Row, Col, Button, Table} from "react-bootstrap";
+import { FaPencil,FaTrash  } from "react-icons/fa6";
+import ContentModalClientes from "./Modals/ContentModalClientes";
 
-const Clientes = ({ clientes }) => {
-    const clientesData = [
-        // Your client data here, e.g.
-        { name: 'Loja', status: 'active' },
-      ];
-  const clientesStatusColors = {
-    active: 'success',
-    inactive: 'danger',
-    expired: 'warning',
-  };
+function Clientes(){
 
-  
+    const [modalShow, setModalShow] = useState(false);
 
   return (
-    <Container>
-      <Row>
-        {clientes.map((clientes, index) => (
-          <Col key={clientes.name + index} sm={4} md={3} lg={2} className="mb-4">
-            <ClientesItem clientes={clientes} statusColor={clientesStatusColors[clientes.status]} />
-          </Col>
-        ))}
-      </Row>
-    </Container>
+        <>
+        <Container className='Custom_Container'>
+        <Row>
+            <Col>
+            <h1 className="Title_custom">Clientes - Suporte</h1>
+            <Table striped bordered hover>
+                <thead> 
+                <tr>
+                    <th>Cliente</th>
+                    <th>Atividade</th>
+                    <th>Profissional</th>
+                    <th>Status</th>
+                    <th>Ações</th>
+                </tr>
+                </thead>
+                <tbody>
+
+                <tr>
+                    <td>World Games</td>
+                    <td>Erro no sla oq</td>
+                    <td></td>
+                    <td>Aberto</td>
+                    <td className='text-center'>
+                    <Button variant="dark" className="btn_custom" onClick={() => setModalShow(true)}><FaPencil /></Button>
+                    <Button variant="dark"><FaTrash /></Button>
+                    </td>
+
+                </tr>
+
+                <tr>
+                    <td>Fair Play</td>
+                    <td>Erro na leitora</td>
+                    <td>Hitalu</td>
+                    <td>Em Andamento</td>
+                    <td className='text-center'>
+                    <Button variant="dark" className="btn_custom" onClick={() => setModalShow(true)}><FaPencil /></Button>
+                    <Button variant="dark"><FaTrash /></Button>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Gorilão</td>
+                    <td>Erro no fliper</td>
+                    <td>Luiz</td>
+                    <td>Aguardando - Desenvolvimento</td>
+                    <td className='text-center'>
+                    <Button variant="dark" className="btn_custom" onClick={() => setModalShow(true)}><FaPencil /></Button>
+                    <Button variant="dark"><FaTrash /></Button>
+                    </td>
+                </tr>
+
+
+
+                </tbody>
+            </Table>
+            <Button variant="dark" className="btn_custom" onClick={() => setModalShow(true)}>Novo Chamado</Button>
+            </Col>
+        </Row>
+        </Container>
+        <ContentModalClientes show={modalShow} onHide={() => setModalShow(false)} />
+    </>
   );
 };
-
-const ClientesItem = ({ clientesData, statusColor }) => {
-  return (
-    <div className="d-flex align-items-center">
-      <span
-        className={`circle-indicator bg-${statusColor} me-3`}
-      ></span>
-      <span>{client.name}</span>
-    </div>
-  );
-};
-
-
 
 export default Clientes;
