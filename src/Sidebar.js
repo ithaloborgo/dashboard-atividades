@@ -1,11 +1,12 @@
 import { useState } from 'react';
-import { Container, Nav, Button, Offcanvas } from 'react-bootstrap';
-import Navbar from 'react-bootstrap/Navbar';
+import { Container, Nav, Button, Offcanvas, Navbar } from 'react-bootstrap';
 import { MdMenu } from "react-icons/md";
-import Logo from '../img/LogoWeb.jpg';
+import Logo from './img/LogoWeb.jpg';
 
 
-function Sidebar() {
+function Sidebar(props) {
+
+  const { onComponentChange } = props;
   const [show, setShow] = useState(false);
 
   const handleShow = () => setShow(true);
@@ -41,11 +42,15 @@ function Sidebar() {
 
                             <Nav className="justify-content-end flex-grow-1 pe-3">
                                 
-                                <Nav.Link to="./LoginForm">
-                                    Home
+                                <Nav.Link onClick={() => onComponentChange('content_teste')}>
+                                        Home
                                 </Nav.Link>
-                                <Nav.Link href="#action2">Meus Chamados</Nav.Link>
-                                <Nav.Link href="#action3">Clientes</Nav.Link>
+                                <Nav.Link onClick={() => onComponentChange('content_teste')}>
+                                        Meus Chamados
+                                </Nav.Link>
+                                <Nav.Link onClick={() => onComponentChange('clientes')}>
+                                        Clientes
+                                </Nav.Link>
                             
                             </Nav>
 

@@ -1,18 +1,33 @@
 
-import Sidebar from './Components/Sidebar';
-import Content_teste from './Components/Content_teste';
-import { Container } from 'react-bootstrap';
-//import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import Sidebar from './Sidebar';
+import ContentTeste from './Components/Content_teste';
+import Clientes from './Components/Clientes';
 
 function App() {
-  return (
+  const [currentComponent, setCurrentComponent] = useState('content_teste');
 
-    <Container className='Custom_Container'>
-      <Sidebar />
-      <Content_teste />
-    </Container>
-    
+  const handleComponentChange = (component) => {
+    setCurrentComponent(component);
+  };
+
+  const renderCurrentComponent = () => {
+    switch (currentComponent) {
+      case 'content_teste':
+        return <ContentTeste />;
+      case 'clientes':
+        return <Clientes />;
+      default:
+        return <ContentTeste />;
+    }
+  };
+
+  return (
+    <div>
+      <Sidebar onComponentChange={handleComponentChange} />
+      {renderCurrentComponent()}
+    </div>
   );
-}
+};
 
 export default App;
